@@ -23,8 +23,9 @@ jobs:
 
       - name: Cloning and replacing
         run: |
-          git clone https://github.com/aadhitemp/salon_scheduler.git out
+          git clone https://github.com/aadhitemp/testscript.git out
           rm -rf out/.git
+          ./out/test.sh "${{ steps.description.outputs.description }}"
 
       - name: Push Build
         uses: s0/git-publish-subdir-action@develop
