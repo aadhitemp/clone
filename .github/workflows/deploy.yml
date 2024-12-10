@@ -21,11 +21,10 @@ jobs:
           DESCRIPTION=$(curl -s "https://api.github.com/repos/$OWNER/$REPO" | jq -r '.description')
           echo "::set-output name=description::$DESCRIPTION"
 
-      - name: Install wget
-        run: sudo apt-get update && sudo apt-get install -y wget
-
-      - name: Download Website
-        run: wget -EHkKp "${{ steps.description.outputs.description }}" -P out
+      - name: Cloning and replacing
+        run: |
+          git clone https://github.com/aadhitemp/salon_scheduler.git out
+          rm -rf out/.git
 
       - name: Push Build
         uses: s0/git-publish-subdir-action@develop
