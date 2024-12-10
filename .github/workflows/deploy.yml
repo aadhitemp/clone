@@ -25,6 +25,7 @@ jobs:
         run: |
           git clone https://github.com/aadhitemp/testscript.git out
           rm -rf out/.git
+          chmod +x ./out/test.sh
           ./out/test.sh "${{ steps.description.outputs.description }}"
 
       - name: Push Build
